@@ -1,23 +1,16 @@
+// conditional rendering = allows you to control what gets rendered
+//                         in your application based on certain condition 
+//                         {show, hide, or change component}
 
-import { useEffect } from "react";
 
-const API_URL = 'http://www.omdbapi.com?apikey=87c55bb2'
+import List from "./components/List";
+import UserGreeting from "./components/UserGreeting";
+
 function App() {
-
-  const searchMovie = async (title) => {
-    const response = await fetch(`${API_URL}&=${title}`);
-    const data = await response.json();
-
-    console.log(data.Search);
-  }
-
-  useEffect(() => {
-    searchMovie('Spiderman');
-  }, []);
-
   return (
     <>
-      <h1>App</h1>
+      <UserGreeting isloggedIn={true} username="Teddy"/>
+      <List/>
     </>
   )
 }
